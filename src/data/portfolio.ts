@@ -7,6 +7,7 @@ export interface ExperienceItem {
   description: string;
   current?: boolean;
   type?: string;
+  url?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -25,37 +26,40 @@ export const profile = {
 
 export const experience: ExperienceItem[] = [
   {
-    period: "2024 - Present",
-    role: "Senior Frontend Developer",
-    type: "Organization",
-    company: "Kirana Digital",
+    period: "Sep 2025 - Mar 2026",
+    role: "Fullstack Engineer",
+    type: "Part-time",
+    company: "PT Strata Digital Farabiel",
     description:
-      "Leading frontend for a SaaS analytics suite used by 2,000+ businesses. Own the design system, mentor 4 engineers, and guard the performance budget.",
-    current: true,
+      "Designed the architecture and developed an internal Outcome-Based Education (OBE) curriculum management platform at PT Strata Digital Farabiel. Responsible for the platform's full-stack development as well as end-user support for internal users, including usage guidance and technical troubleshooting. Worked hybrid from Pekanbaru, Riau, on a part-time basis.",
+    url: "https://e-obe.com/",
   },
   {
-    period: "2022 - 2024",
-    role: "Frontend Developer",
-    type: "Organization",
-    company: "PixelForge Studio",
-    description:
-      "Shipped 12 client websites and web apps, from marketing pages to full e-commerce. Raised the studio's average Lighthouse score from 71 to 96.",
-  },
-  {
-    period: "2021 - 2022",
-    role: "UI Engineer Intern",
+    period: "Jan 2025 - Jun 2025",
+    role: "Front End Engineer",
     type: "Internship",
-    company: "BrightLab",
+    company: "Software Engineering Laboratory, Informatics Engineering, UIN Sultan Syarif Kasim Riau",
     description:
-      "Built internal dashboards and learned the craft: semantic HTML, design tokens, and a healthy code-review culture.",
+      "Served as the front-end developer for Dashboard TIF UIN SUSKA Riau, a campus administration system, built with React, Tailwind CSS, and shadcn/ui.",
+    url: "https://dashboard.tif.uin-suska.ac.id/#kontributor",
   },
   {
-    period: "2020 - 2021",
-    role: "Freelance Web Developer",
-    type: "Freelance",
-    company: "Self-employed",
+    period: "Jul 2025 - Apr 2026",
+    role: "Backend Engineer",
+    type: "Part-time",
+    company: "PT Strata Digital Farabiel",
     description:
-      "Delivered 20+ projects for local businesses - landing pages, company profiles, and small online stores.",
+      "Backend Engineer and CI/CD pipeline owner at PT Strata Digital Farabiel for the PMB portal of STIE Mahardhika, Surabaya, an economics and business college, serving its Doctoral (S3) Program in Management Science admissions system. Tech stack: Node.js with Hono, PostgreSQL, Redis, Midtrans (payment gateway), Tailwind CSS, Docker, and GitHub Actions.",
+    url: "https://pmbs3.stiemahardhika.ac.id/",
+  },
+  {
+    period: "Oct 2025 - Dec 2025",
+    role: "Front End Engineer",
+    type: "Part-time",
+    company: "Lembaga Cici Mandarin",
+    description:
+      "Part-time Frontend Engineer building the cicimandarin.com website. Cici Mandarin provides study, travel, and work services to China, including Mandarin learning and scholarship assistance. Developed the site's interface with Astro, focusing on a fast, responsive, and easy-to-use experience so visitors can easily understand the services offered.",
+    url: "https://cicimandarin.com/",
   },
 ];
 

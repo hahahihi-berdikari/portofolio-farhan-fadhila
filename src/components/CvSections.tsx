@@ -173,22 +173,42 @@ const skillGroups = [
   },
 ];
 
-const certifications = [
-  {
-    title: "Intermediate Assistant Web Developer - Nasional",
-    issuer: "KOMDIGI Digital Talent Academy",
-  },
-  {
-    title: "Intermediate Associate Network Administrator - Nasional",
-    issuer: "KOMDIGI Digital Talent Academy",
-  },
-  {
-    title: "HCIA - Cloud Service",
-    issuer: "Huawei ICT Academy",
-  },
+const certifications: { title: string; issuer: string; link?: string; transcript?: string }[] = [
   {
     title: "Health - AI Agent for Healthcare",
     issuer: "HACKTIV8 x IBM SkillsBuild",
+    link: "https://students.hacktiv8.com/certificates/23671d1f-0c2a-45e4-a45a-158fdc571dfc",
+    transcript: "https://students.hacktiv8.com/certificates/b4aa503f-85bd-49b4-8165-036563b78692",
+  },
+  {
+    title: "HCIA Cloud Service V3.5 Course",
+    issuer: "Huawei ICT Academy",
+    link: "https://drive.google.com/file/d/1jUolVz40rbJlgRC7Ju6EBN9_CEkwdquA/view?usp=drive_link",
+  },
+  {
+    title: "Fundamental of Assistant Web Developer - Nasional Digital Talent Academy",
+    issuer: "Digital Talent Scholarship Kementerian Komunikasi dan Digital",
+    link: "https://drive.google.com/file/d/1o9j6ytecW9za9nbc7_MXxbwJl3g5uI2w/view?usp=drive_link",
+  },
+  {
+    title: "Fundamental of Associate Network Administrator - Nasional Digital Talent Academy",
+    issuer: "Digital Talent Scholarship Kementerian Komunikasi dan Digital",
+    link: "https://drive.google.com/file/d/1FjwJICV4uofnhb6nC33wUtYttGkl8tGq/view?usp=drive_link",
+  },
+  {
+    title: "Intermediate Assistant Web Developer - Nasional Digital Talent Academy",
+    issuer: "Digital Talent Scholarship Kementerian Komunikasi dan Digital",
+    link: "https://drive.google.com/file/d/1aT3wzZVAd8BrGKOeoJ4SzC5tbEKfkNT_/view?usp=drive_link",
+  },
+  {
+    title: "Intermediate Associate Network Administrator - Nasional Digital Talent Academy",
+    issuer: "Digital Talent Scholarship Kementerian Komunikasi dan Digital",
+    link: "https://drive.google.com/file/d/1mWGvYBkPJQRb0BxbKATmInmBHHTWiQrk/view?usp=drive_link",
+  },
+  {
+    title: "Cloud Essentials CA - DEX - AWS - Nasional Digital Talent Academy",
+    issuer: "Digital Talent Scholarship Kementerian Komunikasi dan Digital",
+    link: "https://drive.google.com/file/d/1K9cHkjcy-F-p2Mi6imfOkPZ9E5gvaZKD/view?usp=drive_link",
   },
 ];
 
@@ -219,20 +239,28 @@ export default function CvSections() {
             <Heading>Strong foundations.</Heading>
           </Reveal>
           <Reveal delay={100}>
-            <div className="mx-auto mt-10 max-w-3xl rounded-[8px] border border-hairline-silver bg-white p-8 md:px-5 md:py-5">
-              <p className="font-sf-pro-display text-[20px] font-semibold leading-snug text-ink md:text-[24px]">
-                State Islamic University Sultan Syarif Kasim Riau
-              </p>
-              <p className="mt-2 text-[15px] text-slate md:text-[17px]">
-                Bachelor of Informatics Engineering
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <span className="rounded-[8px] bg-studio-mist px-4 py-1.5 text-[13px] font-medium text-ink">
-                  GPA 3.71 / 4.00
-                </span>
-                <span className="rounded-[8px] bg-studio-mist px-4 py-1.5 text-[13px] font-medium text-ink">
-                  Pekanbaru, Indonesia
-                </span>
+            <div className="mx-auto mt-10 flex max-w-4xl flex-col items-center gap-6 md:flex-row md:items-center">
+              {/* Zoom sedikit ke wajah agar lebih kelihatan */}
+              <img
+                src="/foto saya.png"
+                alt="Farhan Fadhila"
+                className="h-32 w-32 shrink-0 rounded-full border border-hairline-silver object-cover ring-4 ring-studio-mist [object-view-box:inset(18%_15%_32%_15%)] md:h-40 md:w-40"
+              />
+              <div className="w-full flex-1 rounded-[8px] border border-hairline-silver bg-white p-8 md:px-5 md:py-5">
+                <p className="font-sf-pro-display text-[20px] font-semibold leading-snug text-ink md:text-[24px]">
+                  State Islamic University Sultan Syarif Kasim Riau
+                </p>
+                <p className="mt-2 text-[15px] text-slate md:text-[17px]">
+                  Bachelor of Informatics Engineering
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <span className="rounded-[8px] bg-studio-mist px-4 py-1.5 text-[13px] font-medium text-ink">
+                    GPA 3.71 / 4.00
+                  </span>
+                  <span className="rounded-[8px] bg-studio-mist px-4 py-1.5 text-[13px] font-medium text-ink">
+                    Pekanbaru, Indonesia
+                  </span>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -305,11 +333,63 @@ export default function CvSections() {
                       />
                     </svg>
                   </span>
-                  <div>
+                  <div className="flex-1">
                     <p className="font-sf-pro-display text-[16px] font-semibold text-ink md:text-[18px]">
                       {c.title}
                     </p>
                     <p className="mt-0.5 text-[14px] text-slate">{c.issuer}</p>
+                    {c.link && (
+                      <div className="mt-2 flex flex-wrap justify-end gap-4">
+                        <a
+                          href={c.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
+                        >
+                          View certificate
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M3.5 8.5L8.5 3.5M8.5 3.5H5M8.5 3.5v3.5"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </a>
+                        {c.transcript && (
+                          <a
+                            href={c.transcript}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
+                          >
+                            View transcript
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 12 12"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M3.5 8.5L8.5 3.5M8.5 3.5H5M8.5 3.5v3.5"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal>
