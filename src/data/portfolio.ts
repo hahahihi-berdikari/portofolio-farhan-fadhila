@@ -8,6 +8,8 @@ export interface ExperienceItem {
   descriptionId?: string;
   current?: boolean;
   type?: string;
+  experimental?: boolean;
+  hasAi?: boolean;
   url?: string;
 }
 
@@ -65,6 +67,29 @@ export const experience: ExperienceItem[] = [
       "Part-time Frontend Engineer building the cicimandarin.com website. Cici Mandarin provides study, travel, and work services to China, including Mandarin learning and scholarship assistance. Developed the site's interface with Astro, focusing on a fast, responsive, and easy-to-use experience so visitors can easily understand the services offered.",
     descriptionId: "Sebagai Frontend Engineer paruh waktu dalam pembangunan website cicimandarin.com. Cici Mandarin bergerak di bidang layanan studi, travel, dan kerja ke China, termasuk pembelajaran bahasa Mandarin dan pendampingan beasiswa. Mengembangkan antarmuka website tersebut menggunakan framework JavaScript Astro, dengan fokus pada tampilan yang cepat, responsif, dan mudah digunakan, agar pengunjung mudah memahami layanan yang ditawarkan.",
     url: "https://cicimandarin.com/",
+  },
+  {
+    period: "Oct 2026 - Present",
+    role: "Full-Stack Developer",
+    type: "Personal Project",
+    experimental: true,
+    company: "WebGIS Riau",
+    hasAi: true,
+    description:
+      "Built a WebGIS map of smallholder palm-oil distribution and burned land across Riau's 12 regencies and cities. Sourced NASA FIRMS VIIRS hotspot data and clipped it to Riau's borders, then combined it with BPBD and SiPongi burned-area figures and 2024 smallholder plantation statistics — each source kept separate with its own method and coverage. Palm oil is shown as a per-regency choropleth rather than plantation polygons, which would mislabel non-palm plantations as palm. Built the full stack: PostGIS database, Hono API, and React + Leaflet frontend with per-regency statistics. Plus a built-in AI assistant that answers questions about the data in Indonesian — with sources for every number.",
+    descriptionId: "Membangun WebGIS persebaran sawit rakyat dan lahan terbakar di 12 kabupaten/kota Riau. Mencari data titik panas VIIRS dari NASA FIRMS dan memotongnya ke batas Riau, lalu menggabungkannya dengan angka lahan terbakar BPBD dan SiPongi serta statistik sawit rakyat 2024 — setiap sumber tetap terpisah dengan metode dan cakupannya masing-masing. Sawit ditampilkan sebagai warna per kabupaten, bukan poligon perkebunan, karena poligon tersebut bisa salah melabeli perkebunan non-sawit sebagai sawit. Membangun seluruh stack: database PostGIS, API Hono, dan frontend React + Leaflet dengan statistik per kabupaten. Dilengkapi juga asisten AI yang menjawab pertanyaan seputar data Riau dalam bahasa Indonesia, dengan sumber untuk setiap angka.",
+    url: "https://riau.farhanfadhila.web.id/",
+  },
+  {
+    period: "Oct 2026 - Present",
+    role: "Data Analyst",
+    type: "Personal Project",
+    experimental: true,
+    company: "Indonesia vs ASEAN",
+    description:
+      "Built a data-analyst portfolio comparing Indonesia with 9 ASEAN countries on World Bank data (2015–2024, 6 indicators). Audited each indicator's coverage first — including sparse poverty data — then presented the findings in an editorial scrollytelling page with hand-built SVG charts: the internet gap with Singapore narrowed, life expectancy rose 1.77 years, and under-5 mortality fell 8.4 points, while the nominal GDP-per-capita gap widened.",
+    descriptionId: "Membangun portofolio data analyst yang membandingkan Indonesia dengan 9 negara ASEAN dari data Bank Dunia (2015–2024, 6 indikator). Memeriksa kelengkapan data tiap indikator terlebih dahulu — termasuk data kemiskinan yang jarang — lalu menyajikan temuan dalam halaman editorial scrollytelling dengan grafik SVG buatan sendiri: kesenjangan internet dengan Singapura menyempit, harapan hidup naik 1,77 tahun, dan kematian balita turun 8,4 poin, sementara kesenjangan PDB per kapita nominal melebar.",
+    url: "https://indonesiamengejar.farhanfadhila.web.id/",
   },
 ];
 

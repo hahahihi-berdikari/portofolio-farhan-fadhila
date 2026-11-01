@@ -51,13 +51,23 @@ export default function PowerChapter() {
                   </h3>
                   <p className="mt-1 text-[15px]">
                     <span className="text-accent">{e.company}</span>
+                    {e.hasAi && (
+                      <span className="text-slate"> — {t.experience.withAi}</span>
+                    )}
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    {e.type && (
-                      <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
-                        {t.experience.jobTypes[e.type]}
-                      </span>
-                    )}
+                    <div className="flex flex-wrap items-center gap-2">
+                      {e.type && (
+                        <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
+                          {t.experience.jobTypes[e.type]}
+                        </span>
+                      )}
+                      {e.experimental && (
+                        <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
+                          {t.experience.experiment}
+                        </span>
+                      )}
+                    </div>
                     <div className="ml-auto flex flex-wrap items-center gap-x-4 gap-y-2">
                       <button
                         type="button"

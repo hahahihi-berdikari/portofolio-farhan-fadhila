@@ -66,9 +66,12 @@ const en = {
     myJobDesk: "My Job Desk",
     liveProduction: "Live production",
     close: "Close",
+    experiment: "Experiment",
+    withAi: "with AI assistant",
     jobTypes: {
       "Part-time": "Part-time",
       Internship: "Internship",
+      "Personal Project": "Personal Project",
     } as Record<string, string>,
   },
   faq: {
@@ -178,9 +181,12 @@ const id: Translation = {
     myJobDesk: "Job Desk Saya",
     liveProduction: "Situs Live",
     close: "Tutup",
+    experiment: "Eksperimen",
+    withAi: "dengan asisten AI",
     jobTypes: {
       "Part-time": "Paruh Waktu",
       Internship: "Magang",
+      "Personal Project": "Proyek Pribadi",
     },
   },
   faq: {
