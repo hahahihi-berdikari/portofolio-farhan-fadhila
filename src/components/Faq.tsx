@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { faqs } from "../data/portfolio";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Faq() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -10,16 +11,16 @@ export default function Faq() {
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-[90px]">
         <Reveal className="text-center">
           <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-slate">
-            FAQ
+            {t.faq.eyebrow}
           </p>
           <h2 className="mx-auto mt-3 font-sf-pro-display text-[32px] font-semibold text-ink md:text-feature-heading">
-            Questions. Answered.
+            {t.faq.heading}
           </h2>
         </Reveal>
 
         <Reveal delay={100}>
           <div className="mt-10 border-t border-hairline-silver">
-            {faqs.map((f, i) => {
+            {t.faq.items.map((f, i) => {
               const isOpen = open === i;
               return (
                 <div key={f.q} className="border-b border-hairline-silver">

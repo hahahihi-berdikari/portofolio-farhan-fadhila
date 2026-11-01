@@ -1,9 +1,11 @@
 import Reveal from "./Reveal";
 import { useEffect, useState } from "react";
 import { experience, type ExperienceItem } from "../data/portfolio";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function PowerChapter() {
   const [selected, setSelected] = useState<ExperienceItem | null>(null);
+  const { lang, t } = useLanguage();
 
   useEffect(() => {
     if (!selected) return;
@@ -24,10 +26,10 @@ export default function PowerChapter() {
       <div className="mx-auto max-w-4xl px-6 py-10">
         <Reveal className="text-center">
           <p className="text-[14px] font-semibold uppercase tracking-[0.08em] text-ink">
-            ♨️ Experience
+            {t.experience.eyebrow}
           </p>
           <h2 className="mx-auto mt-3 max-w-2xl font-sf-pro-display text-[32px] font-semibold text-ink md:text-feature-heading">
-            Power on full display.
+            {t.experience.heading}
           </h2>
         </Reveal>
 
@@ -53,7 +55,7 @@ export default function PowerChapter() {
                   <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
                     {e.type && (
                       <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
-                        {e.type}
+                        {t.experience.jobTypes[e.type]}
                       </span>
                     )}
                     <div className="ml-auto flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -62,7 +64,7 @@ export default function PowerChapter() {
                         onClick={() => setSelected(e)}
                         className="cursor-pointer text-[13px] font-medium text-ink underline underline-offset-4"
                       >
-                        View job desk
+                        {t.experience.viewJobDesk}
                       </button>
                       {e.url && (
                         <a
@@ -71,7 +73,7 @@ export default function PowerChapter() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
                         >
-                          Live production
+                          {t.experience.liveProduction}
                           <svg
                             width="12"
                             height="12"
@@ -105,18 +107,18 @@ export default function PowerChapter() {
             <div
               role="dialog"
               aria-modal="true"
-              aria-label="My Job Desk"
+              aria-label={t.experience.myJobDesk}
               className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-[8px] border border-hairline-silver bg-white p-6 md:p-8"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="font-sf-pro-display text-[21px] font-semibold text-ink md:text-[24px]">
-                  My Job Desk
+                  {t.experience.myJobDesk}
                 </h3>
                 <button
                   type="button"
                   onClick={() => setSelected(null)}
-                  aria-label="Close"
+                  aria-label={t.experience.close}
                   className="shrink-0 cursor-pointer rounded-full bg-studio-mist p-2 text-ink"
                 >
                   <svg
@@ -136,7 +138,7 @@ export default function PowerChapter() {
                 </button>
               </div>
               <p className="mt-4 text-body-small text-slate">
-                {selected.description}
+                {lang === "id" ? selected.descriptionId ?? selected.description : selected.description}
               </p>
 
             </div>

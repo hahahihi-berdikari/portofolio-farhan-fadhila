@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import Reveal from "./Reveal";
 import WalkingFigure from "./WalkingFigure";
+import { useLanguage } from "../i18n/LanguageContext";
+import type { Translation } from "../i18n/translations";
 
 const ICON_PATHS: Record<string, ReactNode> = {
   code: (
@@ -117,10 +119,11 @@ function SkillPillIcon({ icon }: { icon: string }) {
 }
 
 
-const skillGroups = [
+type SkillGroupKey = keyof Translation["skills"]["groups"];
+
+const skillGroups: { key: SkillGroupKey; items: { name: string; icon: string }[] }[] = [
   {
-    title: "Programming & Frameworks",
-    description: "Core languages and frameworks I use to build fast, reliable web applications.",
+    key: "programming",
     items: [
       { name: "PHP", icon: "code" },
       { name: "Python", icon: "dot" },
@@ -132,8 +135,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Data",
-    description: "Databases and query tools for designing, storing, and optimizing data.",
+    key: "data",
     items: [
       { name: "SQL (Advanced)", icon: "db" },
       { name: "MySQL", icon: "db" },
@@ -141,8 +143,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Infrastructure & Tools",
-    description: "Tooling and practices for shipping, deploying, and running software in production.",
+    key: "infrastructure",
     items: [
       { name: "Git", icon: "branch" },
       { name: "GitHub", icon: "dot" },
@@ -154,8 +155,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Core Competencies",
-    description: "How I work - from system design decisions to leading technical teams.",
+    key: "core",
     items: [
       { name: "Full-Stack Web Development", icon: "layers" },
       { name: "System Architecture", icon: "box" },
@@ -164,8 +164,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Languages",
-    description: "Languages I use to communicate, document, and collaborate.",
+    key: "languages",
     items: [
       { name: "Indonesian", icon: "chat" },
       { name: "English", icon: "chat" },
@@ -229,14 +228,15 @@ function Heading({ children }: { children: string }) {
 }
 
 export default function CvSections() {
+  const { t } = useLanguage();
   return (
     <>
       {/* Education */}
       <section id="education" className="border-t border-hairline-silver bg-gallery-white">
         <div className="mx-auto max-w-6xl px-6 py-10">
           <Reveal className="text-center">
-            <Eyebrow>✨ Education</Eyebrow>
-            <Heading>Strong foundations.</Heading>
+            <Eyebrow>{t.education.eyebrow}</Eyebrow>
+            <Heading>{t.education.heading}</Heading>
           </Reveal>
           <Reveal delay={100}>
             <div className="mx-auto mt-10 flex max-w-4xl flex-col items-center gap-6 md:flex-row md:items-center">
@@ -248,10 +248,10 @@ export default function CvSections() {
               />
               <div className="w-full flex-1 rounded-[8px] border border-hairline-silver bg-white p-8 md:px-5 md:py-5">
                 <p className="font-sf-pro-display text-[20px] font-semibold leading-snug text-ink md:text-[24px]">
-                  State Islamic University Sultan Syarif Kasim Riau
+                  {t.education.university}
                 </p>
                 <p className="mt-2 text-[15px] text-slate md:text-[17px]">
-                  Bachelor of Informatics Engineering
+                  {t.education.degree}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <span className="rounded-[8px] bg-studio-mist px-4 py-1.5 text-[13px] font-medium text-ink">
@@ -275,18 +275,18 @@ export default function CvSections() {
       />
         <div className="mx-auto max-w-6xl px-6 py-10">
           <Reveal className="text-center">
-            <Eyebrow>💎 Skills</Eyebrow>
-            <Heading>The toolkit.</Heading>
+            <Eyebrow>{t.skills.eyebrow}</Eyebrow>
+            <Heading>{t.skills.heading}</Heading>
           </Reveal>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {skillGroups.map((g, i) => (
-              <Reveal key={g.title} delay={i * 80}>
+              <Reveal key={g.key} delay={i * 80}>
                 <div className="h-full rounded-[8px] border border-hairline-silver bg-white p-8 md:p-10">
                   <p className="font-sf-pro-display text-[20px] font-semibold text-ink">
-                    {g.title}
+                    {t.skills.groups[g.key].title}
                   </p>
                   <p className="mt-2 text-[15px] leading-relaxed text-slate">
-                    {g.description}
+                    {t.skills.groups[g.key].description}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {g.items.map((item) => (
@@ -310,8 +310,8 @@ export default function CvSections() {
       <section id="certifications" className="border-t border-hairline-silver bg-gallery-white">
         <div className="mx-auto max-w-6xl px-6 py-10">
           <Reveal className="text-center">
-            <Eyebrow>🎯 Certifications</Eyebrow>
-            <Heading>Certified proof.</Heading>
+            <Eyebrow>{t.certifications.eyebrow}</Eyebrow>
+            <Heading>{t.certifications.heading}</Heading>
           </Reveal>
           <div className="mx-auto mt-10 grid max-w-4xl gap-4">
             {certifications.map((c, i) => (
@@ -346,7 +346,7 @@ export default function CvSections() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
                         >
-                          View certificate
+                          {t.certifications.viewCertificate}
                           <svg
                             width="12"
                             height="12"
@@ -370,7 +370,7 @@ export default function CvSections() {
                             rel="noreferrer"
                             className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
                           >
-                            View transcript
+                            {t.certifications.viewTranscript}
                             <svg
                               width="12"
                               height="12"

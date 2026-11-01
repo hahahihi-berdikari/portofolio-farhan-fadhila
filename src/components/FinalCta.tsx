@@ -2,6 +2,7 @@ import { useState } from "react";
 import Reveal from "./Reveal";
 import WalkingFigure from "./WalkingFigure";
 import { profile } from "../data/portfolio";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const socials = [
   { label: "GitHub", href: profile.github },
@@ -9,6 +10,7 @@ const socials = [
 ];
 
 export default function FinalCta() {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -30,10 +32,10 @@ export default function FinalCta() {
       <div className="mx-auto max-w-4xl px-6 py-24 text-center md:py-[140px]">
         <Reveal>
           <h2 className="font-sf-pro-display text-[40px] font-semibold leading-[1.02] tracking-[-0.02em] text-ink sm:text-[56px] md:text-[80px]">
-            Let&apos;s build.
+            {t.contact.heading}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-[19px] leading-[1.4] text-slate md:text-[21px]">
-            Have a project, a role, or just an idea? My inbox is always open.
+            {t.contact.subtitle}
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
             <a
@@ -45,8 +47,8 @@ export default function FinalCta() {
             <button
               type="button"
               onClick={handleCopy}
-              aria-label="Salin alamat email"
-              title="Salin alamat email"
+              aria-label={t.contact.copyEmail}
+              title={t.contact.copyEmail}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline-silver bg-white text-ink transition-colors hover:bg-studio-mist active:scale-[0.97]"
             >
               {copied ? (

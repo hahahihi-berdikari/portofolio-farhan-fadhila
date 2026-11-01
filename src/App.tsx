@@ -4,18 +4,21 @@ import PowerChapter from "./components/PowerChapter";
 import CvSections from "./components/CvSections";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gallery-white font-sf-pro-text text-ink">
-      <LocalNav />
-      <main>
-        <Hero />
-        <CvSections />
-        <PowerChapter />
-        <FinalCta />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-gallery-white font-sf-pro-text text-ink">
+        <LocalNav />
+        <main>
+          <Hero />
+          <CvSections />
+          <PowerChapter />
+          <FinalCta />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
