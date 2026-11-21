@@ -58,6 +58,7 @@ const en = {
     heading: "Certified proof.",
     viewCertificate: "View certificate",
     viewTranscript: "View transcript",
+    openInNewTab: "Open in new tab",
   },
   experience: {
     eyebrow: "♨️ Experience",
@@ -147,6 +148,7 @@ const id: Translation = {
     heading: "Bukti sertifikasi.",
     viewCertificate: "Lihat sertifikat",
     viewTranscript: "Lihat transkrip",
+    openInNewTab: "Buka di tab baru",
   },
   experience: {
     eyebrow: "♨️ Pengalaman",
