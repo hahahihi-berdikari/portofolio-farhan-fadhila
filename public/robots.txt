@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://porfolio-test-neon.vercel.app/sitemap.xml
+Sitemap: https://portofolio.farhanfadhila.web.id/sitemap.xml

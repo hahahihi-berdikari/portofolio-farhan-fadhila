@@ -37,14 +37,26 @@ export default function PowerChapter() {
           {experience.map((e, i) => (
             <Reveal key={`${e.role}-${e.company}`} delay={i * 60}>
               <div className="grid gap-2 border-t border-hairline-silver py-8 md:grid-cols-[160px_1fr] md:gap-8">
-                <p className="text-[12px] font-medium uppercase tracking-[0.06em] text-slate md:pt-1">
-                  {e.period}
-                  {e.current && (
-                    <span className="ml-2 font-semibold normal-case tracking-[-0.12px] text-launch-orange">
-                      Current
-                    </span>
+                <div className="md:pt-1">
+                  <p className="text-[12px] font-medium uppercase tracking-[0.06em] text-slate">
+                    {e.period}
+                    {e.current && (
+                      <span className="ml-2 font-semibold normal-case tracking-[-0.12px] text-launch-orange">
+                        Current
+                      </span>
+                    )}
+                  </p>
+                  {e.type && (
+                    <p className="mt-2 text-[12px] text-slate">
+                      {t.experience.jobTypes[e.type]}
+                    </p>
                   )}
-                </p>
+                  {e.experimental && (
+                    <p className="mt-1 text-[12px] text-slate">
+                      {t.experience.experiment}
+                    </p>
+                  )}
+                </div>
                 <div>
                   <h3 className="font-sf-pro-display text-[21px] font-semibold text-ink md:text-[24px]">
                     {e.role}
@@ -55,19 +67,30 @@ export default function PowerChapter() {
                       <span className="text-slate"> — {t.experience.withAi}</span>
                     )}
                   </p>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {e.type && (
-                        <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
-                          {t.experience.jobTypes[e.type]}
+                  {e.summary && (
+                    <p className="mt-2 line-clamp-2 text-[15px] leading-[1.6] text-slate">
+                      {lang === "id" ? e.summaryId ?? e.summary : e.summary}
+                    </p>
+                  )}
+                  {e.techStack && e.techStack.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {e.techStack.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-hairline-silver px-2.5 py-1 text-[12px] font-medium text-ink"
+                        >
+                          {tech}
                         </span>
-                      )}
-                      {e.experimental && (
-                        <span className="rounded-full bg-studio-mist px-3 py-1 text-[12px] font-medium text-ink">
-                          {t.experience.experiment}
+                      ))}
+                      {e.techStack.length > 4 && (
+                        <span className="rounded-full border border-hairline-silver px-2.5 py-1 text-[12px] font-medium text-ink">
+                          +{e.techStack.length - 4}
                         </span>
                       )}
                     </div>
+                  )}
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+
                     <div className="ml-auto flex flex-wrap items-center gap-x-4 gap-y-2">
                       <button
                         type="button"

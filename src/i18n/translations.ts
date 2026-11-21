@@ -74,32 +74,6 @@ const en = {
       "Personal Project": "Personal Project",
     } as Record<string, string>,
   },
-  faq: {
-    eyebrow: "FAQ",
-    heading: "Questions. Answered.",
-    items: [
-      {
-        q: "Are you available for freelance work?",
-        a: "Yes — I'm currently booking projects for Q3 2026. Tell me about your timeline and I'll let you know within 48 hours whether we're a fit.",
-      },
-      {
-        q: "What's your typical project timeline?",
-        a: "Most marketing sites take 2–3 weeks; full web apps take 4–6. I work in weekly milestones so you always see progress, never surprises.",
-      },
-      {
-        q: "Do you work remotely?",
-        a: "Yes. I'm based in Pekanbaru (WIB, UTC+7) and work async-first — written updates, recorded walkthroughs, and overlap hours for calls with any timezone.",
-      },
-      {
-        q: "What does your process look like?",
-        a: "Four phases: Discover (goals, users, constraints), Design (wireframes to hi-fi in Figma), Build (React + TypeScript, reviewed weekly), and Ship (tested, documented, monitored).",
-      },
-      {
-        q: "Can you work with our existing design system?",
-        a: "Absolutely. I can extend yours, audit it for gaps, or build one from scratch — tokens, components, and docs included.",
-      },
-    ],
-  },
   contact: {
     heading: "Let's build.",
     subtitle: "Have a project, a role, or just an idea? My inbox is always open.",
@@ -188,32 +162,6 @@ const id: Translation = {
       Internship: "Magang",
       "Personal Project": "Proyek Pribadi",
     },
-  },
-  faq: {
-    eyebrow: "FAQ",
-    heading: "Pertanyaan. Terjawab.",
-    items: [
-      {
-        q: "Apakah Anda tersedia untuk pekerjaan freelance?",
-        a: "Ya — saya sedang membuka booking proyek untuk Q3 2026. Ceritakan timeline Anda dan saya akan memberi tahu dalam 48 jam apakah kita cocok.",
-      },
-      {
-        q: "Bagaimana timeline proyek biasanya?",
-        a: "Kebanyakan situs marketing memakan waktu 2–3 minggu; aplikasi web penuh 4–6 minggu. Saya bekerja dalam milestone mingguan sehingga Anda selalu melihat progres, tanpa kejutan.",
-      },
-      {
-        q: "Apakah Anda bekerja secara remote?",
-        a: "Ya. Saya berbasis di Pekanbaru (WIB, UTC+7) dan bekerja async-first — update tertulis, rekaman walkthrough, dan jam overlap untuk panggilan dengan zona waktu mana pun.",
-      },
-      {
-        q: "Seperti apa proses kerja Anda?",
-        a: "Empat fase: Discover (tujuan, pengguna, kendala), Design (wireframe hingga hi-fi di Figma), Build (React + TypeScript, direview tiap minggu), dan Ship (dites, didokumentasikan, dimonitor).",
-      },
-      {
-        q: "Bisakah Anda bekerja dengan design system kami yang sudah ada?",
-        a: "Tentu. Saya bisa mengembangkan milik Anda, mengaudit kekurangannya, atau membangun dari nol — token, komponen, dan dokumentasi termasuk.",
-      },
-    ],
   },
   contact: {
     heading: "Mari membangun.",

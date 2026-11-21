@@ -128,6 +128,7 @@ const skillGroups: { key: SkillGroupKey; items: { name: string; icon: string }[]
       { name: "PHP", icon: "code" },
       { name: "Python", icon: "dot" },
       { name: "JavaScript", icon: "dot" },
+      { name: "Go", icon: "code" },
       { name: "Laravel", icon: "layers" },
       { name: "React (Vite)", icon: "atom" },
       { name: "FastAPI", icon: "bolt" },

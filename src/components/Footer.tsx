@@ -8,7 +8,7 @@ export default function Footer() {
         <p className="border-b border-hairline-silver pb-8 text-[13px] leading-[1.6] text-slate">
           {t.footer.ps}{" "}
           <a
-            href="https://pagespeed.web.dev/analysis?url=https://porfolio-test-neon.vercel.app/"
+            href="https://pagespeed.web.dev/analysis?url=https://portofolio.farhanfadhila.web.id/"
             target="_blank"
             rel="noreferrer"
             className="text-accent"
