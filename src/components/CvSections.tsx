@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Reveal from "./Reveal";
 import WalkingFigure from "./WalkingFigure";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -212,6 +212,15 @@ const certifications: { title: string; issuer: string; link?: string; transcript
   },
 ];
 
+type CertificateModal = { title: string; issuer: string; url: string; label: string };
+
+function toEmbedUrl(url: string | undefined) {
+  if (!url) return "";
+  const drive = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (drive) return `https://drive.google.com/file/d/${drive[1]}/preview`;
+  return url;
+}
+
 function Eyebrow({ children }: { children: string }) {
   return (
     <p className="text-[14px] font-semibold uppercase tracking-[0.08em] text-ink">
@@ -230,6 +239,22 @@ function Heading({ children }: { children: string }) {
 
 export default function CvSections() {
   const { t } = useLanguage();
+  const [selected, setSelected] = useState<CertificateModal | null>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (ev: KeyboardEvent) => {
+      if (ev.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [selected]);
+
   return (
     <>
       {/* Education */}
@@ -341,11 +366,17 @@ export default function CvSections() {
                     <p className="mt-0.5 text-[14px] text-slate">{c.issuer}</p>
                     {c.link && (
                       <div className="mt-2 flex flex-wrap justify-end gap-4">
-                        <a
-                          href={c.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSelected({
+                              title: c.title,
+                              issuer: c.issuer,
+                              url: toEmbedUrl(c.link),
+                              label: t.certifications.viewCertificate,
+                            })
+                          }
+                          className="inline-flex cursor-pointer items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
                         >
                           {t.certifications.viewCertificate}
                           <svg
@@ -363,13 +394,19 @@ export default function CvSections() {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </a>
+                        </button>
                         {c.transcript && (
-                          <a
-                            href={c.transcript}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setSelected({
+                                title: c.title,
+                                issuer: c.issuer,
+                                url: toEmbedUrl(c.transcript),
+                                label: t.certifications.viewTranscript,
+                              })
+                            }
+                            className="inline-flex cursor-pointer items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
                           >
                             {t.certifications.viewTranscript}
                             <svg
@@ -387,7 +424,7 @@ export default function CvSections() {
                                 strokeLinejoin="round"
                               />
                             </svg>
-                          </a>
+                          </button>
                         )}
                       </div>
                     )}
@@ -398,6 +435,66 @@ export default function CvSections() {
           </div>
         </div>
       </section>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 md:p-6"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.title}
+            className="flex max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-[8px] border border-hairline-silver bg-white"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 border-b border-hairline-silver p-5 md:px-6">
+              <div>
+                <h3 className="font-sf-pro-display text-[18px] font-semibold text-ink md:text-[21px]">
+                  {selected.title}
+                </h3>
+                <p className="mt-0.5 text-[14px] text-slate">{selected.issuer}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelected(null)}
+                aria-label={t.experience.close}
+                className="shrink-0 cursor-pointer rounded-full bg-studio-mist p-2 text-ink"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 2l10 10M12 2L2 12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <iframe
+              src={selected.url}
+              title={`${selected.label} - ${selected.title}`}
+              className="h-[70vh] w-full border-0"
+            />
+            <div className="flex justify-end border-t border-hairline-silver p-4 md:px-6">
+              <a
+                href={selected.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-[13px] font-medium text-ink underline underline-offset-4"
+              >
+                {t.certifications.openInNewTab}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
