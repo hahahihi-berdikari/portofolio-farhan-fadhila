@@ -93,11 +93,6 @@ export default function PowerChapter() {
                       label={t.experience.jobTypes[e.type]}
                     />
                   )}
-                  {/* {e.experimental && (
-                    <p className="mt-1 text-[12px] text-slate">
-                      {t.experience.experiment}
-                    </p>
-                  )} */}
                 </div>
                 <div>
                   <h3 className="font-sf-pro-display text-[21px] font-semibold text-ink md:text-[24px]">
