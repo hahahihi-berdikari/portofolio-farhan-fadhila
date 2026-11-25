@@ -58,11 +58,11 @@ export default function FinalCta() {
           <p className="mx-auto mt-6 max-w-xl text-[19px] leading-[1.4] text-slate md:text-[21px]">
             {t.contact.subtitle}
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <div className="mt-10 flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
             <div className="flex items-center gap-1.5">
               <a
                 href={`mailto:${profile.email}`}
-                className="flex items-center gap-2 text-[16px] font-semibold text-ink underline underline-offset-4 md:text-[17px]"
+                className="flex items-center gap-2 py-2 text-[15px] font-semibold text-ink underline underline-offset-4 sm:py-0 sm:text-[16px] md:text-[17px]"
               >
                 <MailIcon />
                 {profile.email}
@@ -72,7 +72,7 @@ export default function FinalCta() {
                 onClick={handleCopy}
                 aria-label={t.contact.copyEmail}
                 title={t.contact.copyEmail}
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline-silver bg-white text-ink transition-colors hover:bg-studio-mist active:scale-[0.97]"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-hairline-silver bg-white text-ink transition-colors hover:bg-studio-mist active:scale-[0.97] sm:h-8 sm:w-8"
               >
                 {copied ? (
                   <svg
@@ -112,7 +112,7 @@ export default function FinalCta() {
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-[16px] font-medium text-ink hover:underline hover:underline-offset-4 md:text-[17px]"
+                className="flex items-center gap-2 py-2 text-[15px] font-medium text-ink hover:underline hover:underline-offset-4 sm:py-0 sm:text-[16px] md:text-[17px]"
               >
                 <s.Icon />
                 {s.label}
