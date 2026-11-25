@@ -3,6 +3,52 @@ import { useEffect, useState } from "react";
 import { experience, type ExperienceItem } from "../data/portfolio";
 import { useLanguage } from "../i18n/LanguageContext";
 
+const ClockIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+
+const GraduationCapIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+    <path d="M22 10v6" />
+    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+  </svg>
+);
+
+const FlaskIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M10 2v7.5a2 2 0 0 1-.2.9L4.7 20.5a1 1 0 0 0 .9 1.5h12.8a1 1 0 0 0 .9-1.5L14.2 10.4a2 2 0 0 1-.2-.9V2" />
+    <path d="M8.5 2h7" />
+    <path d="M7 16h10" />
+  </svg>
+);
+
+function TypeTag({ type, label }: { type: string; label: string }) {
+  const styles =
+    type === "Personal Project"
+      ? "border-ink bg-ink text-white"
+      : type === "Internship"
+        ? "border-accent/30 bg-accent/10 text-accent-deep"
+        : "border-hairline-silver bg-studio-mist text-ink";
+  const Icon =
+    type === "Personal Project"
+      ? FlaskIcon
+      : type === "Internship"
+        ? GraduationCapIcon
+        : ClockIcon;
+  return (
+    <span
+      className={`mt-2 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium ${styles}`}
+    >
+      <Icon />
+      {label}
+    </span>
+  );
+}
+
 export default function PowerChapter() {
   const [selected, setSelected] = useState<ExperienceItem | null>(null);
   const { lang, t } = useLanguage();
@@ -40,22 +86,18 @@ export default function PowerChapter() {
                 <div className="md:pt-1">
                   <p className="text-[12px] font-medium uppercase tracking-[0.06em] text-slate">
                     {e.period}
-                    {e.current && (
-                      <span className="ml-2 font-semibold normal-case tracking-[-0.12px] text-launch-orange">
-                        Current
-                      </span>
-                    )}
                   </p>
                   {e.type && (
-                    <p className="mt-2 text-[12px] text-slate">
-                      {t.experience.jobTypes[e.type]}
-                    </p>
+                    <TypeTag
+                      type={e.type}
+                      label={t.experience.jobTypes[e.type]}
+                    />
                   )}
-                  {e.experimental && (
+                  {/* {e.experimental && (
                     <p className="mt-1 text-[12px] text-slate">
                       {t.experience.experiment}
                     </p>
-                  )}
+                  )} */}
                 </div>
                 <div>
                   <h3 className="font-sf-pro-display text-[21px] font-semibold text-ink md:text-[24px]">
